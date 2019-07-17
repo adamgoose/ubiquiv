@@ -23,6 +23,19 @@ func (rr *RemoteRequest) Decode(r io.Reader) error {
 	return gob.NewDecoder(r).Decode(rr)
 }
 
+// Execute the request against a KeyValue store
+func (rr RemoteRequest) Execute(kv KeyValue) ([]byte, error) {
+	switch rr.Operation {
+	case GET:
+		return kv.Get(rr.Key), nil
+	case PUT:
+		return nil, kv.Put(rr.Key, rr.Value)
+	case DELETE:
+		return nil, kv.Delete(rr.Key)
+	}
+	return nil, nil
+}
+
 // RemoteRequestOperation enum
 type RemoteRequestOperation int
 

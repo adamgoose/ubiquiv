@@ -15,7 +15,6 @@ type KeyValue interface {
 	Put(key, value []byte) error
 	Delete(key []byte) error
 	Close() error
-	Execute(r RemoteRequest, kv KeyValue) ([]byte, error)
 }
 
 // OpenFile creates a new Client against a given filepath
@@ -48,17 +47,4 @@ func OpenServer(addr, bucket string) (KeyValue, error) {
 		},
 		ServerAddr: addr,
 	}, nil
-}
-
-// Execute is capable of executing a RemoteRequest on a KeyValue interface
-func (c Client) Execute(r RemoteRequest, kv KeyValue) ([]byte, error) {
-	switch r.Operation {
-	case GET:
-		return kv.Get(r.Key), nil
-	case PUT:
-		return nil, kv.Put(r.Key, r.Value)
-	case DELETE:
-		return nil, kv.Delete(r.Key)
-	}
-	return nil, nil
 }
