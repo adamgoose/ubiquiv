@@ -1,7 +1,11 @@
 package ubiquiv
 
 import (
+	"context"
+
+	proto "github.com/adamgoose/ubiquiv/proto"
 	"github.com/boltdb/bolt"
+	"google.golang.org/grpc"
 )
 
 // Client wraps the KeyValue interface with the provided connection
@@ -41,10 +45,17 @@ func OpenFile(path, bucket string) (KeyValue, error) {
 
 // OpenServer creates a new Client against a given server address
 func OpenServer(addr, bucket string) (KeyValue, error) {
-	return &RemoteInterface{
+	conn, err := grpc.Dial(addr, grpc.WithInsecure())
+	if err != nil {
+		return nil, err
+	}
+
+	return &GRPCInterface{
 		Client: &Client{
 			Bucket: []byte(bucket),
 		},
-		ServerAddr: addr,
+		Context: context.Background(),
+		Conn:    conn,
+		GRPC:    proto.NewKeyValueClient(conn),
 	}, nil
 }

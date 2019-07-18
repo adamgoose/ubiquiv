@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package ubiquiv;
+
+// The KeyValue service definition.
+service KeyValue {
+  // Get a value from the store
+  rpc Get (Operation) returns (Result) {}
+
+  // Put a value to the store
+  rpc Put (Operation) returns (Result) {}
+
+  // Delete a value from the store
+  rpc Delete (Operation) returns (Result) {}
+}
+
+// Operation is used to send arguments to the KeyValue service
+message Operation {
+  bytes bucket = 1;
+  bytes key = 2;
+  bytes value = 3;
+}
+
+// Result encapsulates the results from the KeyValue service
+message Result {
+  bytes value = 1;
+}
