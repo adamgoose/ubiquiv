@@ -23,7 +23,12 @@ func (s GRPCServer) Get(ctx context.Context, op *proto.Operation) (*proto.Result
 
 	var value []byte
 	s.DB.View(func(tx *bolt.Tx) error {
-		value = tx.Bucket(op.Bucket).Get(op.Key)
+		b := tx.Bucket(op.Bucket)
+		if b == nil {
+			return nil
+		}
+
+		value = b.Get(op.Key)
 		return nil
 	})
 
@@ -37,7 +42,11 @@ func (s GRPCServer) Put(ctx context.Context, op *proto.Operation) (*proto.Result
 	}
 
 	if err := s.DB.Update(func(tx *bolt.Tx) error {
-		return tx.Bucket(op.Bucket).Put(op.Key, op.Value)
+		b, err := tx.CreateBucketIfNotExists(op.Bucket)
+		if err != nil {
+			return err
+		}
+		return b.Put(op.Key, op.Value)
 	}); err != nil {
 		return nil, err
 	}
@@ -52,7 +61,11 @@ func (s GRPCServer) Delete(ctx context.Context, op *proto.Operation) (*proto.Res
 	}
 
 	if err := s.DB.Update(func(tx *bolt.Tx) error {
-		return tx.Bucket(op.Bucket).Delete(op.Key)
+		b, err := tx.CreateBucketIfNotExists(op.Bucket)
+		if err != nil {
+			return err
+		}
+		return b.Delete(op.Key)
 	}); err != nil {
 		return nil, err
 	}
@@ -67,15 +80,20 @@ func (s GRPCServer) List(ctx context.Context, op *proto.Operation) (*proto.ListR
 	}
 
 	keys := [][]byte{}
-	s.DB.View(func(tx *bolt.Tx) error {
+	if err := s.DB.View(func(tx *bolt.Tx) error {
 		b := tx.Bucket(op.Bucket)
+		if b == nil {
+			return nil
+		}
 
 		b.ForEach(func(k, v []byte) error {
 			keys = append(keys, k)
 			return nil
 		})
 		return nil
-	})
+	}); err != nil {
+		return nil, err
+	}
 
 	return &proto.ListResult{Keys: keys}, nil
 }
