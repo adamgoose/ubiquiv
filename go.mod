@@ -1,4 +1,4 @@
-module github.com/adamgoose/ubiquiv
+module github.com/adamgoose/ubivolt
 
 go 1.12
 

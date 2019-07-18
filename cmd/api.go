@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/adamgoose/ubiquiv"
+	"github.com/adamgoose/ubivolt"
 	"github.com/spf13/cobra"
 )
 
@@ -12,7 +12,7 @@ var getCommand = &cobra.Command{
 	Short: "Gets a key's value",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		c, _ := ubiquiv.OpenServer("localhost:5000", "test")
+		c, _ := ubivolt.OpenServer("localhost:5000", "test")
 		defer c.Close()
 
 		fmt.Printf("%s", c.Get([]byte(args[0])))
@@ -24,7 +24,7 @@ var putCommand = &cobra.Command{
 	Short: "Puts a key's value",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
-		c, _ := ubiquiv.OpenServer("localhost:5000", "test")
+		c, _ := ubivolt.OpenServer("localhost:5000", "test")
 		defer c.Close()
 
 		if err := c.Put([]byte(args[0]), []byte(args[1])); err != nil {
@@ -38,7 +38,7 @@ var deleteCommand = &cobra.Command{
 	Short: "Deletes a key",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		c, _ := ubiquiv.OpenServer("localhost:5000", "test")
+		c, _ := ubivolt.OpenServer("localhost:5000", "test")
 		defer c.Close()
 
 		if err := c.Delete([]byte(args[0])); err != nil {

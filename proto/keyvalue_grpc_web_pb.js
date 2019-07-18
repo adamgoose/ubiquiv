@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for ubiquiv
+ * @fileoverview gRPC-Web generated client stub for ubivolt
  * @enhanceable
  * @public
  */
@@ -12,7 +12,7 @@ const grpc = {};
 grpc.web = require('grpc-web');
 
 const proto = {};
-proto.ubiquiv = require('./keyvalue_pb.js');
+proto.ubivolt = require('./keyvalue_pb.js');
 
 /**
  * @param {string} hostname
@@ -22,7 +22,7 @@ proto.ubiquiv = require('./keyvalue_pb.js');
  * @struct
  * @final
  */
-proto.ubiquiv.KeyValueClient =
+proto.ubivolt.KeyValueClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -58,7 +58,7 @@ proto.ubiquiv.KeyValueClient =
  * @struct
  * @final
  */
-proto.ubiquiv.KeyValuePromiseClient =
+proto.ubivolt.KeyValuePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -89,33 +89,33 @@ proto.ubiquiv.KeyValuePromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.ubiquiv.Operation,
- *   !proto.ubiquiv.Result>}
+ *   !proto.ubivolt.Operation,
+ *   !proto.ubivolt.Result>}
  */
 const methodInfo_KeyValue_Get = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.ubiquiv.Result,
-  /** @param {!proto.ubiquiv.Operation} request */
+  proto.ubivolt.Result,
+  /** @param {!proto.ubivolt.Operation} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.ubiquiv.Result.deserializeBinary
+  proto.ubivolt.Result.deserializeBinary
 );
 
 
 /**
- * @param {!proto.ubiquiv.Operation} request The
+ * @param {!proto.ubivolt.Operation} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.ubiquiv.Result)}
+ * @param {function(?grpc.web.Error, ?proto.ubivolt.Result)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.ubiquiv.Result>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ubivolt.Result>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ubiquiv.KeyValueClient.prototype.get =
+proto.ubivolt.KeyValueClient.prototype.get =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/ubiquiv.KeyValue/Get',
+      '/ubivolt.KeyValue/Get',
       request,
       metadata || {},
       methodInfo_KeyValue_Get,
@@ -124,17 +124,17 @@ proto.ubiquiv.KeyValueClient.prototype.get =
 
 
 /**
- * @param {!proto.ubiquiv.Operation} request The
+ * @param {!proto.ubivolt.Operation} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.ubiquiv.Result>}
+ * @return {!Promise<!proto.ubivolt.Result>}
  *     A native promise that resolves to the response
  */
-proto.ubiquiv.KeyValuePromiseClient.prototype.get =
+proto.ubivolt.KeyValuePromiseClient.prototype.get =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/ubiquiv.KeyValue/Get',
+      '/ubivolt.KeyValue/Get',
       request,
       metadata || {},
       methodInfo_KeyValue_Get);
@@ -144,33 +144,33 @@ proto.ubiquiv.KeyValuePromiseClient.prototype.get =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.ubiquiv.Operation,
- *   !proto.ubiquiv.Result>}
+ *   !proto.ubivolt.Operation,
+ *   !proto.ubivolt.Result>}
  */
 const methodInfo_KeyValue_Put = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.ubiquiv.Result,
-  /** @param {!proto.ubiquiv.Operation} request */
+  proto.ubivolt.Result,
+  /** @param {!proto.ubivolt.Operation} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.ubiquiv.Result.deserializeBinary
+  proto.ubivolt.Result.deserializeBinary
 );
 
 
 /**
- * @param {!proto.ubiquiv.Operation} request The
+ * @param {!proto.ubivolt.Operation} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.ubiquiv.Result)}
+ * @param {function(?grpc.web.Error, ?proto.ubivolt.Result)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.ubiquiv.Result>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ubivolt.Result>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ubiquiv.KeyValueClient.prototype.put =
+proto.ubivolt.KeyValueClient.prototype.put =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/ubiquiv.KeyValue/Put',
+      '/ubivolt.KeyValue/Put',
       request,
       metadata || {},
       methodInfo_KeyValue_Put,
@@ -179,17 +179,17 @@ proto.ubiquiv.KeyValueClient.prototype.put =
 
 
 /**
- * @param {!proto.ubiquiv.Operation} request The
+ * @param {!proto.ubivolt.Operation} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.ubiquiv.Result>}
+ * @return {!Promise<!proto.ubivolt.Result>}
  *     A native promise that resolves to the response
  */
-proto.ubiquiv.KeyValuePromiseClient.prototype.put =
+proto.ubivolt.KeyValuePromiseClient.prototype.put =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/ubiquiv.KeyValue/Put',
+      '/ubivolt.KeyValue/Put',
       request,
       metadata || {},
       methodInfo_KeyValue_Put);
@@ -199,33 +199,33 @@ proto.ubiquiv.KeyValuePromiseClient.prototype.put =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.ubiquiv.Operation,
- *   !proto.ubiquiv.Result>}
+ *   !proto.ubivolt.Operation,
+ *   !proto.ubivolt.Result>}
  */
 const methodInfo_KeyValue_Delete = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.ubiquiv.Result,
-  /** @param {!proto.ubiquiv.Operation} request */
+  proto.ubivolt.Result,
+  /** @param {!proto.ubivolt.Operation} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.ubiquiv.Result.deserializeBinary
+  proto.ubivolt.Result.deserializeBinary
 );
 
 
 /**
- * @param {!proto.ubiquiv.Operation} request The
+ * @param {!proto.ubivolt.Operation} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.ubiquiv.Result)}
+ * @param {function(?grpc.web.Error, ?proto.ubivolt.Result)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.ubiquiv.Result>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.ubivolt.Result>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.ubiquiv.KeyValueClient.prototype.delete =
+proto.ubivolt.KeyValueClient.prototype.delete =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/ubiquiv.KeyValue/Delete',
+      '/ubivolt.KeyValue/Delete',
       request,
       metadata || {},
       methodInfo_KeyValue_Delete,
@@ -234,22 +234,22 @@ proto.ubiquiv.KeyValueClient.prototype.delete =
 
 
 /**
- * @param {!proto.ubiquiv.Operation} request The
+ * @param {!proto.ubivolt.Operation} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.ubiquiv.Result>}
+ * @return {!Promise<!proto.ubivolt.Result>}
  *     A native promise that resolves to the response
  */
-proto.ubiquiv.KeyValuePromiseClient.prototype.delete =
+proto.ubivolt.KeyValuePromiseClient.prototype.delete =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/ubiquiv.KeyValue/Delete',
+      '/ubivolt.KeyValue/Delete',
       request,
       metadata || {},
       methodInfo_KeyValue_Delete);
 };
 
 
-module.exports = proto.ubiquiv;
+module.exports = proto.ubivolt;
 

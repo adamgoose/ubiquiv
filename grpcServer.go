@@ -1,12 +1,12 @@
 //go:generate protoc --go_out=plugins=grpc:./proto --js_out=import_style=commonjs:./proto --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./proto --csharp_out=./proto ./keyvalue.proto
 
-package ubiquiv
+package ubivolt
 
 import (
 	"context"
 	"errors"
 
-	proto "github.com/adamgoose/ubiquiv/proto"
+	proto "github.com/adamgoose/ubivolt/proto"
 	"github.com/boltdb/bolt"
 )
 

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package ubiquiv;
+package ubivolt;
 
 // The KeyValue service definition.
 service KeyValue {

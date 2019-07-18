@@ -1,4 +1,4 @@
-package ubiquiv
+package ubivolt
 
 import "github.com/boltdb/bolt"
 

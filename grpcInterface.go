@@ -1,9 +1,9 @@
-package ubiquiv
+package ubivolt
 
 import (
 	"context"
 
-	proto "github.com/adamgoose/ubiquiv/proto"
+	proto "github.com/adamgoose/ubivolt/proto"
 	"google.golang.org/grpc"
 )
 

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace Ubiquiv {
+namespace Ubivolt {
 
   /// <summary>Holder for reflection information generated from keyvalue.proto</summary>
   public static partial class KeyvalueReflection {
@@ -24,17 +24,17 @@ namespace Ubiquiv {
     static KeyvalueReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg5rZXl2YWx1ZS5wcm90bxIHdWJpcXVpdiI3CglPcGVyYXRpb24SDgoGYnVj",
+            "Cg5rZXl2YWx1ZS5wcm90bxIHdWJpdm9sdCI3CglPcGVyYXRpb24SDgoGYnVj",
             "a2V0GAEgASgMEgsKA2tleRgCIAEoDBINCgV2YWx1ZRgDIAEoDCIXCgZSZXN1",
-            "bHQSDQoFdmFsdWUYASABKAwylwEKCEtleVZhbHVlEiwKA0dldBISLnViaXF1",
-            "aXYuT3BlcmF0aW9uGg8udWJpcXVpdi5SZXN1bHQiABIsCgNQdXQSEi51Ymlx",
-            "dWl2Lk9wZXJhdGlvbhoPLnViaXF1aXYuUmVzdWx0IgASLwoGRGVsZXRlEhIu",
-            "dWJpcXVpdi5PcGVyYXRpb24aDy51YmlxdWl2LlJlc3VsdCIAYgZwcm90bzM="));
+            "bHQSDQoFdmFsdWUYASABKAwylwEKCEtleVZhbHVlEiwKA0dldBISLnViaXZv",
+            "bHQuT3BlcmF0aW9uGg8udWJpdm9sdC5SZXN1bHQiABIsCgNQdXQSEi51Yml2",
+            "b2x0Lk9wZXJhdGlvbhoPLnViaXZvbHQuUmVzdWx0IgASLwoGRGVsZXRlEhIu",
+            "dWJpdm9sdC5PcGVyYXRpb24aDy51Yml2b2x0LlJlc3VsdCIAYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ubiquiv.Operation), global::Ubiquiv.Operation.Parser, new[]{ "Bucket", "Key", "Value" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ubiquiv.Result), global::Ubiquiv.Result.Parser, new[]{ "Value" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ubivolt.Operation), global::Ubivolt.Operation.Parser, new[]{ "Bucket", "Key", "Value" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ubivolt.Result), global::Ubivolt.Result.Parser, new[]{ "Value" }, null, null, null)
           }));
     }
     #endregion
@@ -52,7 +52,7 @@ namespace Ubiquiv {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ubiquiv.KeyvalueReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Ubivolt.KeyvalueReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -240,7 +240,7 @@ namespace Ubiquiv {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Ubiquiv.KeyvalueReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Ubivolt.KeyvalueReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

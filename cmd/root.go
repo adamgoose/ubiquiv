@@ -12,6 +12,6 @@ func main() {
 }
 
 var rootCmd = &cobra.Command{
-	Use:   "ubiquiv",
-	Short: "UbiquiV is a flexible key-value store, allowing for embedding or centralization.",
+	Use:   "ubivolt",
+	Short: "UbiVolt is a flexible key-value store, allowing for embedding or centralization.",
 }
