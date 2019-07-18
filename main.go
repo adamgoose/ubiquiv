@@ -18,6 +18,7 @@ type KeyValue interface {
 	Get(key []byte) []byte
 	Put(key, value []byte) error
 	Delete(key []byte) error
+	List() [][]byte
 	Close() error
 }
 

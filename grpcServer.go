@@ -59,3 +59,23 @@ func (s GRPCServer) Delete(ctx context.Context, op *proto.Operation) (*proto.Res
 
 	return &proto.Result{}, nil
 }
+
+// List all keys in the store
+func (s GRPCServer) List(ctx context.Context, op *proto.Operation) (*proto.ListResult, error) {
+	if len(op.Bucket) == 0 {
+		return nil, errors.New("bucket is required")
+	}
+
+	keys := [][]byte{}
+	s.DB.View(func(tx *bolt.Tx) error {
+		b := tx.Bucket(op.Bucket)
+
+		b.ForEach(func(k, v []byte) error {
+			keys = append(keys, k)
+			return nil
+		})
+		return nil
+	})
+
+	return &proto.ListResult{Keys: keys}, nil
+}

@@ -46,6 +46,15 @@ func (b GRPCInterface) Delete(key []byte) error {
 	return err
 }
 
+// List lists all keys
+func (b GRPCInterface) List() [][]byte {
+	r, _ := b.GRPC.List(b.Context, &proto.Operation{
+		Bucket: b.Bucket,
+	})
+
+	return r.Keys
+}
+
 // Close closes the connection
 func (b GRPCInterface) Close() error {
 	return b.Conn.Close()

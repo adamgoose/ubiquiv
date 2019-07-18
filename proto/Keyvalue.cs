@@ -26,15 +26,18 @@ namespace Ubivolt {
           string.Concat(
             "Cg5rZXl2YWx1ZS5wcm90bxIHdWJpdm9sdCI3CglPcGVyYXRpb24SDgoGYnVj",
             "a2V0GAEgASgMEgsKA2tleRgCIAEoDBINCgV2YWx1ZRgDIAEoDCIXCgZSZXN1",
-            "bHQSDQoFdmFsdWUYASABKAwylwEKCEtleVZhbHVlEiwKA0dldBISLnViaXZv",
-            "bHQuT3BlcmF0aW9uGg8udWJpdm9sdC5SZXN1bHQiABIsCgNQdXQSEi51Yml2",
-            "b2x0Lk9wZXJhdGlvbhoPLnViaXZvbHQuUmVzdWx0IgASLwoGRGVsZXRlEhIu",
-            "dWJpdm9sdC5PcGVyYXRpb24aDy51Yml2b2x0LlJlc3VsdCIAYgZwcm90bzM="));
+            "bHQSDQoFdmFsdWUYASABKAwiGgoKTGlzdFJlc3VsdBIMCgRrZXlzGAEgAygM",
+            "MsoBCghLZXlWYWx1ZRIsCgNHZXQSEi51Yml2b2x0Lk9wZXJhdGlvbhoPLnVi",
+            "aXZvbHQuUmVzdWx0IgASLAoDUHV0EhIudWJpdm9sdC5PcGVyYXRpb24aDy51",
+            "Yml2b2x0LlJlc3VsdCIAEi8KBkRlbGV0ZRISLnViaXZvbHQuT3BlcmF0aW9u",
+            "Gg8udWJpdm9sdC5SZXN1bHQiABIxCgRMaXN0EhIudWJpdm9sdC5PcGVyYXRp",
+            "b24aEy51Yml2b2x0Lkxpc3RSZXN1bHQiAGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Ubivolt.Operation), global::Ubivolt.Operation.Parser, new[]{ "Bucket", "Key", "Value" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Ubivolt.Result), global::Ubivolt.Result.Parser, new[]{ "Value" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ubivolt.Result), global::Ubivolt.Result.Parser, new[]{ "Value" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ubivolt.ListResult), global::Ubivolt.ListResult.Parser, new[]{ "Keys" }, null, null, null)
           }));
     }
     #endregion
@@ -353,6 +356,130 @@ namespace Ubivolt {
             break;
           case 10: {
             Value = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// ListResult encapsulates the List results from the KeyValue service
+  /// </summary>
+  public sealed partial class ListResult : pb::IMessage<ListResult> {
+    private static readonly pb::MessageParser<ListResult> _parser = new pb::MessageParser<ListResult>(() => new ListResult());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ListResult> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Ubivolt.KeyvalueReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ListResult() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ListResult(ListResult other) : this() {
+      keys_ = other.keys_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ListResult Clone() {
+      return new ListResult(this);
+    }
+
+    /// <summary>Field number for the "keys" field.</summary>
+    public const int KeysFieldNumber = 1;
+    private static readonly pb::FieldCodec<pb::ByteString> _repeated_keys_codec
+        = pb::FieldCodec.ForBytes(10);
+    private readonly pbc::RepeatedField<pb::ByteString> keys_ = new pbc::RepeatedField<pb::ByteString>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<pb::ByteString> Keys {
+      get { return keys_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ListResult);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ListResult other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!keys_.Equals(other.keys_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= keys_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      keys_.WriteTo(output, _repeated_keys_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += keys_.CalculateSize(_repeated_keys_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ListResult other) {
+      if (other == null) {
+        return;
+      }
+      keys_.Add(other.keys_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            keys_.AddEntriesFrom(input, _repeated_keys_codec);
             break;
           }
         }

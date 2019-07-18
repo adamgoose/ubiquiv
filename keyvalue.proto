@@ -12,6 +12,9 @@ service KeyValue {
 
   // Delete a value from the store
   rpc Delete (Operation) returns (Result) {}
+
+  // List all keys in the store
+  rpc List (Operation) returns (ListResult) {}
 }
 
 // Operation is used to send arguments to the KeyValue service
@@ -24,4 +27,9 @@ message Operation {
 // Result encapsulates the results from the KeyValue service
 message Result {
   bytes value = 1;
+}
+
+// ListResult encapsulates the List results from the KeyValue service
+message ListResult {
+  repeated bytes keys = 1;
 }

@@ -47,8 +47,23 @@ var deleteCommand = &cobra.Command{
 	},
 }
 
+var listCommand = &cobra.Command{
+	Use:   "list",
+	Short: "Lists all keys",
+	Args:  cobra.NoArgs,
+	Run: func(cmd *cobra.Command, args []string) {
+		c, _ := ubivolt.OpenServer("localhost:5000", "test")
+		defer c.Close()
+
+		for _, k := range c.List() {
+			fmt.Printf("%s\n", k)
+		}
+	},
+}
+
 func init() {
 	rootCmd.AddCommand(getCommand)
 	rootCmd.AddCommand(putCommand)
 	rootCmd.AddCommand(deleteCommand)
+	rootCmd.AddCommand(listCommand)
 }

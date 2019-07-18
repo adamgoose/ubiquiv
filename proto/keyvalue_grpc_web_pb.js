@@ -251,5 +251,60 @@ proto.ubivolt.KeyValuePromiseClient.prototype.delete =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.ubivolt.Operation,
+ *   !proto.ubivolt.ListResult>}
+ */
+const methodInfo_KeyValue_List = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.ubivolt.ListResult,
+  /** @param {!proto.ubivolt.Operation} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.ubivolt.ListResult.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.ubivolt.Operation} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.ubivolt.ListResult)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.ubivolt.ListResult>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.ubivolt.KeyValueClient.prototype.list =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/ubivolt.KeyValue/List',
+      request,
+      metadata || {},
+      methodInfo_KeyValue_List,
+      callback);
+};
+
+
+/**
+ * @param {!proto.ubivolt.Operation} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.ubivolt.ListResult>}
+ *     A native promise that resolves to the response
+ */
+proto.ubivolt.KeyValuePromiseClient.prototype.list =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/ubivolt.KeyValue/List',
+      request,
+      metadata || {},
+      methodInfo_KeyValue_List);
+};
+
+
 module.exports = proto.ubivolt;
 

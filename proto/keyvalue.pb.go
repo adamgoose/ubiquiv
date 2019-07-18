@@ -120,27 +120,70 @@ func (m *Result) GetValue() []byte {
 	return nil
 }
 
+// ListResult encapsulates the List results from the KeyValue service
+type ListResult struct {
+	Keys                 [][]byte `protobuf:"bytes,1,rep,name=keys,proto3" json:"keys,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ListResult) Reset()         { *m = ListResult{} }
+func (m *ListResult) String() string { return proto.CompactTextString(m) }
+func (*ListResult) ProtoMessage()    {}
+func (*ListResult) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d36e29ec3bae7218, []int{2}
+}
+
+func (m *ListResult) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ListResult.Unmarshal(m, b)
+}
+func (m *ListResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ListResult.Marshal(b, m, deterministic)
+}
+func (m *ListResult) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListResult.Merge(m, src)
+}
+func (m *ListResult) XXX_Size() int {
+	return xxx_messageInfo_ListResult.Size(m)
+}
+func (m *ListResult) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListResult.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ListResult proto.InternalMessageInfo
+
+func (m *ListResult) GetKeys() [][]byte {
+	if m != nil {
+		return m.Keys
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*Operation)(nil), "ubivolt.Operation")
 	proto.RegisterType((*Result)(nil), "ubivolt.Result")
+	proto.RegisterType((*ListResult)(nil), "ubivolt.ListResult")
 }
 
 func init() { proto.RegisterFile("keyvalue.proto", fileDescriptor_d36e29ec3bae7218) }
 
 var fileDescriptor_d36e29ec3bae7218 = []byte{
-	// 178 bytes of a gzipped FileDescriptorProto
+	// 217 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0xcb, 0x4e, 0xad, 0x2c,
 	0x4b, 0xcc, 0x29, 0x4d, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x2f, 0x4d, 0xca, 0x2c,
 	0xcb, 0xcf, 0x29, 0x51, 0xf2, 0xe6, 0xe2, 0xf4, 0x2f, 0x48, 0x2d, 0x4a, 0x2c, 0xc9, 0xcc, 0xcf,
 	0x13, 0x12, 0xe3, 0x62, 0x4b, 0x2a, 0x4d, 0xce, 0x4e, 0x2d, 0x91, 0x60, 0x54, 0x60, 0xd4, 0xe0,
 	0x09, 0x82, 0xf2, 0x84, 0x04, 0xb8, 0x98, 0xb3, 0x53, 0x2b, 0x25, 0x98, 0xc0, 0x82, 0x20, 0xa6,
 	0x90, 0x08, 0x17, 0x2b, 0xd8, 0x38, 0x09, 0x66, 0xb0, 0x18, 0x84, 0xa3, 0x24, 0xc7, 0xc5, 0x16,
-	0x94, 0x5a, 0x5c, 0x9a, 0x53, 0x82, 0x90, 0x67, 0x44, 0x92, 0x37, 0x9a, 0xce, 0xc8, 0xc5, 0xe1,
-	0x9d, 0x5a, 0x19, 0x06, 0xe2, 0x08, 0xe9, 0x70, 0x31, 0xbb, 0xa7, 0x96, 0x08, 0x09, 0xe9, 0x41,
-	0x9d, 0xa2, 0x07, 0x77, 0x87, 0x14, 0x3f, 0x5c, 0x0c, 0x62, 0x9c, 0x12, 0x03, 0x48, 0x75, 0x40,
-	0x29, 0xd1, 0xaa, 0xf5, 0xb9, 0xd8, 0x5c, 0x52, 0x73, 0x52, 0x4b, 0x52, 0x89, 0xd4, 0x90, 0xc4,
-	0x06, 0x0e, 0x16, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0x7b, 0x7b, 0xb5, 0x9a, 0x28, 0x01,
-	0x00, 0x00,
+	0x94, 0x5a, 0x5c, 0x9a, 0x53, 0x82, 0x90, 0x67, 0x44, 0x96, 0x57, 0xe0, 0xe2, 0xf2, 0xc9, 0x2c,
+	0x2e, 0x81, 0xaa, 0x11, 0xe2, 0x62, 0xc9, 0x4e, 0xad, 0x2c, 0x96, 0x60, 0x54, 0x60, 0xd6, 0xe0,
+	0x09, 0x02, 0xb3, 0x8d, 0x4e, 0x31, 0x72, 0x71, 0x78, 0xa7, 0x56, 0x86, 0x81, 0x94, 0x0b, 0xe9,
+	0x70, 0x31, 0xbb, 0xa7, 0x96, 0x08, 0x09, 0xe9, 0x41, 0x1d, 0xab, 0x07, 0x77, 0xa9, 0x14, 0x3f,
+	0x5c, 0x0c, 0x62, 0x98, 0x12, 0x03, 0x48, 0x75, 0x40, 0x29, 0xd1, 0xaa, 0xf5, 0xb9, 0xd8, 0x5c,
+	0x52, 0x73, 0x52, 0x4b, 0x52, 0x89, 0xd5, 0x60, 0xc8, 0xc5, 0x02, 0x72, 0x3b, 0x56, 0xe5, 0xc2,
+	0x70, 0x31, 0x84, 0xf7, 0x94, 0x18, 0x92, 0xd8, 0xc0, 0x61, 0x6d, 0x0c, 0x08, 0x00, 0x00, 0xff,
+	0xff, 0x1b, 0x04, 0xf8, 0x84, 0x7d, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -161,6 +204,8 @@ type KeyValueClient interface {
 	Put(ctx context.Context, in *Operation, opts ...grpc.CallOption) (*Result, error)
 	// Delete a value from the store
 	Delete(ctx context.Context, in *Operation, opts ...grpc.CallOption) (*Result, error)
+	// List all keys in the store
+	List(ctx context.Context, in *Operation, opts ...grpc.CallOption) (*ListResult, error)
 }
 
 type keyValueClient struct {
@@ -198,6 +243,15 @@ func (c *keyValueClient) Delete(ctx context.Context, in *Operation, opts ...grpc
 	return out, nil
 }
 
+func (c *keyValueClient) List(ctx context.Context, in *Operation, opts ...grpc.CallOption) (*ListResult, error) {
+	out := new(ListResult)
+	err := c.cc.Invoke(ctx, "/ubivolt.KeyValue/List", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // KeyValueServer is the server API for KeyValue service.
 type KeyValueServer interface {
 	// Get a value from the store
@@ -206,6 +260,8 @@ type KeyValueServer interface {
 	Put(context.Context, *Operation) (*Result, error)
 	// Delete a value from the store
 	Delete(context.Context, *Operation) (*Result, error)
+	// List all keys in the store
+	List(context.Context, *Operation) (*ListResult, error)
 }
 
 // UnimplementedKeyValueServer can be embedded to have forward compatible implementations.
@@ -220,6 +276,9 @@ func (*UnimplementedKeyValueServer) Put(ctx context.Context, req *Operation) (*R
 }
 func (*UnimplementedKeyValueServer) Delete(ctx context.Context, req *Operation) (*Result, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
+}
+func (*UnimplementedKeyValueServer) List(ctx context.Context, req *Operation) (*ListResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
 
 func RegisterKeyValueServer(s *grpc.Server, srv KeyValueServer) {
@@ -280,6 +339,24 @@ func _KeyValue_Delete_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
+func _KeyValue_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Operation)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KeyValueServer).List(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ubivolt.KeyValue/List",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KeyValueServer).List(ctx, req.(*Operation))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _KeyValue_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "ubivolt.KeyValue",
 	HandlerType: (*KeyValueServer)(nil),
@@ -295,6 +372,10 @@ var _KeyValue_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Delete",
 			Handler:    _KeyValue_Delete_Handler,
+		},
+		{
+			MethodName: "List",
+			Handler:    _KeyValue_List_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
